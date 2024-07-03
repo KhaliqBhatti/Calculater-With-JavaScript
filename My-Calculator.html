@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <script src="https://kit.fontawesome.com/9c1668d95b.js" crossorigin="anonymous"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@100;300;400;500;700&display=swap"
+        rel="stylesheet">
+
+
+    <style>
+        body {
+            font-family: 'M PLUS Rounded 1c', sans-serif;
+        }
+
+        .main-div {
+            box-shadow: 0px 5px 10px 0px white;
+            transition: 0.5s;
+        }
+
+        .main-div:hover {
+            box-shadow: 0px 5px 20px 0px white;
+        }
+
+        button {
+            border: 2px solid rgb(155, 154, 156);
+            border-radius: 50%;
+            color: white !important;
+            background-color: rgb(69, 69, 69) !important;
+
+        }
+
+        .num-btn>button {
+            width: 100%;
+            height: 100%;
+        }
+
+        .calcul-div>button {
+            width: 80%;
+            height: 15% !important; 
+            background-color: #F79A0A !important;
+            border: 2px solid rgb(155, 154, 156) !important;
+            color: rgb(255, 255, 255) !important;
+            border-radius: 50% !important;
+        }
+
+        .step-back:hover i {
+            margin-right: 10px;
+        }
+
+        .zero {
+            /* width: 100% !important; */
+            border-radius: 10px;
+            background-color: rgb(94, 127, 44) !important;
+            border: 2px solid rgba(255, 53, 53, 0.747);
+        }
+    </style>
+</head>
+
+<body class="bg-[#202020]">
+    <div
+        class="main-div w-[85vw] sm:w-[45vw] md:w-[35vw] lg:w-[30vw] h-[80vh] mx-auto mt-12 rounded-2xl border-[1px] border-white bg-[#282828]">
+        <input type="text" class="w-full h-20 rounded-2xl border-2 border-[#242721] px-2 text-3xl bg-[#f5f5f5]">
+        <div class="all-btn w-full  flex text-2xl h-[75%]  mt-8 justify-between  ">
+            <div class="num-btn w-full  grid grid-cols-3 gap-x-6 gap-y-5 mx-2 box-border ">
+                <button>
+                    1
+                </button>
+                <button>
+                    2
+                </button>
+                <button>
+                    3
+                </button>
+                <button>
+                    4
+                </button>
+                <button>
+                    5
+                </button>
+                <button>
+                    6
+                </button>
+                <button>
+                    7
+                </button>
+                <button>
+                    8
+                </button>
+                <button>
+                    9
+                </button>
+                <button class="text-3xl bg-[#4d4c4d] text-white hover:bg-[#515151] border-2 border-green-400">
+                    =
+                </button>
+                <button class="zero">
+                    0
+                </button>
+                <button class="step-back">
+
+                    <i class="fa-solid fa-arrow-left text-2xl duration-500"></i>
+                </button>
+
+            </div>
+            <div class="calcul-div w-[25%]  flex flex-col justify-between items-center  box-border  ml-1">
+                <button id="clear">
+                    C
+                </button>
+                <button>
+                    /
+                </button>
+                <button>
+                    *
+                </button>
+                <button>
+                    +
+                </button>
+                <button>
+                    -
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+
+
+    <script>
+        let inp = document.querySelector('input')
+        let btn = document.querySelectorAll('button')
+        var bck = document.getElementsByClassName('step-back')[0]
+        console.log(bck, "test my");
+        bck.addEventListener('click', () => {
+            inp.value = inp.value.slice(0, -1)
+        })
+        let count = 0
+
+        btn.forEach((ele) => {
+            ele.addEventListener('click', (e) => {
+                // console.log(e.target.innerText)
+
+                if (e.target.innerText != "=" && e.target.innerText != 'C' && e.target.innerText !== 'back') {
+                    inp.value += e.target.innerText;
+                }
+                else if (e.target.innerText == 'C') {
+                    inp.value = ""
+                }
+
+                else {
+                    inp.value = eval(inp.value)
+                }
+
+
+            })
+        })
+
+
+    </script>
+</body>
+
+</html>
